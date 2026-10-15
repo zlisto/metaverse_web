@@ -95,9 +95,9 @@ Every portal should:
 
 These keep travel feeling like one continuous place instead of a page reload.
 
-- **Leaving:** when a portal fires, the world fades its own music and sounds out over about 0.4 s.
-- **The transition belongs to the browser.** The browser fades the screen to black, plays the teleport sound (a rising and falling whoosh), and loads the next world. A world opened on its own plays its own whoosh and waits about 0.45 s before changing `location.href`.
-- **Arriving:** the world places the visitor at the requested spawn, facing into the space. Sound and music start on the visitor's first click, because browsers block audio until then.
+- **Leaving:** when a portal fires, the world fades its own music out over about 0.4 s and plays the teleport sound (a rising and falling whoosh). The world plays it, not the browser, because the world is where the visitor's clicks and keys happened, so its audio is always allowed. The world keeps the mouse locked until the page changes, so no pause menu flashes on the way out.
+- **The fade belongs to the browser.** Inside the Metaverse Browser, the world sends `navigate` and the browser fades the screen to black, waits about 0.45 s for the whoosh, and loads the next world. A world opened on its own waits the same 0.45 s and changes `location.href`. The browser plays its own whoosh only for its own buttons (bookmarks, Back, the address bar).
+- **Arriving:** when the address has a `?spawn=`, the visitor came through a portal, so the world skips its start screen and drops them straight in at that spawn, facing into the space. The keys work immediately; the first click locks the mouse for looking around (browsers require a click for that), and on phones the joystick turns on by itself. Music starts right away, or on the first key or click if the browser holds audio until then.
 
 ## 6. The Metaverse Browser
 
