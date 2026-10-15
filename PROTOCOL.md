@@ -15,7 +15,7 @@ The protocol is small on purpose. A world may use any engine (three.js, Babylon,
 
 ## 1. The manifest
 
-Every world serves a JSON file at `.well-known/metaverse.json`, relative to the world's address. For `https://example.com/` that is `https://example.com/.well-known/metaverse.json`; for a world under a path, like `https://zlisto.github.io/yale_som_virtual/`, it is `https://zlisto.github.io/yale_som_virtual/.well-known/metaverse.json`.
+Every world serves a JSON file at `.well-known/metaverse.json`, relative to the world's address. For `https://example.com/` that is `https://example.com/.well-known/metaverse.json`; for a world under a path, like `https://zlisto.github.io/evans-hall-3d/`, it is `https://zlisto.github.io/evans-hall-3d/.well-known/metaverse.json`.
 
 ```json
 {
@@ -127,20 +127,19 @@ To check a world: open it on its own, then open it in the Metaverse Browser. You
 | --- | --- | --- |
 | Metaverse Browser | https://zlisto.github.io/metaverse_browser/ | [zlisto/metaverse_browser](https://github.com/zlisto/metaverse_browser) |
 | Metaverse Square (hub) | https://zlisto.github.io/hub_world/ | [zlisto/hub_world](https://github.com/zlisto/hub_world) |
-| Yale SOM, Evans Hall Floor 2 | https://zlisto.github.io/yale_som_virtual/ | [zlisto/yale_som_virtual](https://github.com/zlisto/yale_som_virtual) |
+| Yale SOM, Evans Hall | https://zlisto.github.io/evans-hall-3d/ | [zlisto/evans-hall-3d](https://github.com/zlisto/evans-hall-3d) |
 | Darul Kebab | https://zlisto.github.io/darul_kebab/ | [zlisto/darul_kebab](https://github.com/zlisto/darul_kebab) |
 | World Starter (template) | https://zlisto.github.io/world_starter/ | [zlisto/world_starter](https://github.com/zlisto/world_starter) |
 | Registry of worlds | | [zlisto/metaverse_registry](https://github.com/zlisto/metaverse_registry) |
 
 In every world, `src/mvw.js` is the world-side client and `src/Portal.jsx` the three.js portal; both are the same file everywhere. `src/audio.js` (generated music and the whoosh) is optional and not part of the protocol.
 
-**To be listed:** add your world to the registry by pull request ([how](https://github.com/zlisto/metaverse_registry#add-your-world)). Metaverse Square rebuilds daily and gives every registered world a portal; its spawn point in front of your portal is `by_<your id>`.
+**To be listed:** add your world to the registry by pull request ([how](https://github.com/zlisto/metaverse_registry#add-your-world)); one that adds only your own GitHub Pages world merges automatically once its manifest checks out. Metaverse Square reads the registry live, so your portal appears within minutes. The square's spawn in front of your portal is `by_<your id>`, and its portal to you lands at your `from_square` spawn if you have one, otherwise `default`.
 
 ## Ports for local development
 
 | Port | What |
 | --- | --- |
-| 5173 | Yale SOM, Evans Hall Floor 2 |
 | 5174 | Darul Kebab |
 | 5175 | The Metaverse Browser |
 | 5176 | World Starter |

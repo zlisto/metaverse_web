@@ -11,7 +11,7 @@ The World Wide Web, with 3D worlds in place of pages. Every world is its own web
 | --- | --- | --- |
 | Metaverse Browser | [open](https://zlisto.github.io/metaverse_browser/) | [zlisto/metaverse_browser](https://github.com/zlisto/metaverse_browser) |
 | Metaverse Square | [walk](https://zlisto.github.io/hub_world/) | [zlisto/hub_world](https://github.com/zlisto/hub_world) |
-| Yale SOM, Evans Hall Floor 2 | [walk](https://zlisto.github.io/yale_som_virtual/) | [zlisto/yale_som_virtual](https://github.com/zlisto/yale_som_virtual) |
+| Yale SOM, Evans Hall | [walk](https://zlisto.github.io/evans-hall-3d/) | [zlisto/evans-hall-3d](https://github.com/zlisto/evans-hall-3d) |
 | Darul Kebab | [walk](https://zlisto.github.io/darul_kebab/) | [zlisto/darul_kebab](https://github.com/zlisto/darul_kebab) |
 | World Starter | [walk](https://zlisto.github.io/world_starter/) | [zlisto/world_starter](https://github.com/zlisto/world_starter) (a template) |
 | Registry | | [zlisto/metaverse_registry](https://github.com/zlisto/metaverse_registry) |
@@ -20,4 +20,4 @@ The World Wide Web, with 3D worlds in place of pages. Every world is its own web
 
 1. Click **Use this template** on [world_starter](https://github.com/zlisto/world_starter), or add [`mvw.js`](https://github.com/zlisto/darul_kebab/blob/main/src/mvw.js), spawn points and a manifest to your own 3D site ([PROTOCOL.md section 7](PROTOCOL.md#7-make-your-own-world-and-link-it-in)).
 2. Publish it on GitHub Pages or anywhere else.
-3. Add it to the [registry](https://github.com/zlisto/metaverse_registry#add-your-world) by pull request. Within a day it gets a portal in Metaverse Square.
+3. Add it to the [registry](https://github.com/zlisto/metaverse_registry#add-your-world) by pull request. If it's your own GitHub Pages world it merges automatically, and within minutes it has a portal in Metaverse Square.
