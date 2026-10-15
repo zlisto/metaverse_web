@@ -1,0 +1,9 @@
+# each world, the browser and the registry are their own repos
+yale_som_virtual/
+darul_kebab/
+metaverse_browser/
+world_starter/
+hub_world/
+registry/
+.claude/
+node_modules/

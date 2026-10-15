@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Metaverse Web</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  /* Slides are drawn on a fixed 1920x1080 canvas and scaled to fit the window. */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0b0910; overflow: hidden; }
+  #stage { width: 1920px; height: 1080px; position: absolute; left: 50%; top: 50%; transform-origin: center; }
+  .slide { position: absolute; inset: 0; width: 1920px; height: 1080px; opacity: 0; pointer-events: none; transition: opacity .35s ease; overflow: hidden; }
+  .slide.on { opacity: 1; pointer-events: auto; }
+  .slide h1, .slide h2, .slide h3, .slide p, .slide ul, .slide table { margin: 0; }
+  .slide table { border-collapse: collapse; width: 100%; }
+  .slide th, .slide td { text-align: left; padding: 18px 24px; border-bottom: 2px solid #E2D8CA; }
+  .slide th { font-weight: 700; color: #C2246F; }
+  #ui { position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); display: flex; gap: 10px; align-items: center;
+        font: 14px system-ui, sans-serif; color: #ffd6ea; background: rgba(11,11,13,.75); border: 1px solid #ff4fa3; border-radius: 999px; padding: 6px 12px; opacity: .25; transition: opacity .2s; }
+  #ui:hover { opacity: 1; }
+  #ui button { background: none; border: 0; color: #ff4fa3; font-size: 18px; cursor: pointer; padding: 0 6px; }
+</style>
+</head>
+<body>
+<div id="stage">
+<section class="slide" id="cover" data-transition="fade" style="background:radial-gradient(circle at 78% 30%, #3A1747 0%, #120E1F 55%);color:#F6F1EA;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:end;gap:40px">
+<div style="position:absolute;left:1240px;top:150px;width:360px;height:520px;border:6px solid #FF5FA8;border-radius:180px 180px 0 0;box-shadow:0 0 80px #FF5FA8"></div>
+<div style="position:absolute;left:1300px;top:210px;width:240px;height:460px;background:linear-gradient(180deg, #4FC8F0 0%, #3A1747 100%);border-radius:120px 120px 0 0;opacity:0.55"></div>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#FF5FA8;letter-spacing:4px;text-transform:uppercase">A proposal · October 2026</p>
+<h1 style="font-size:150px;font-weight:700;line-height:1.0;letter-spacing:-4px;width:1100px">The Metaverse Web</h1>
+<p style="font-size:44px;color:#C9C0D6;width:1100px;line-height:1.3">Worlds are websites. Doors are links. You walk the web.</p>
+</section>
+<section class="slide" id="web1989" data-transition="fade" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">The 1989 recipe</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">The web won with four simple parts</h2>
+</div>
+<table style="font-size:34px;color:#120E1F">
+<tr><th style="width:24%">Part</th><th style="width:38%">The web (1989)</th><th style="width:38%">The metaverse web</th></tr>
+<tr><td>Address</td><td>URL</td><td>URL + a spawn point</td></tr>
+<tr style="background:#EDE5DA"><td>Content</td><td>An HTML page</td><td>A live 3D world (a website)</td></tr>
+<tr><td>Link</td><td>&lt;a href&gt;</td><td>A portal you walk through</td></tr>
+<tr style="background:#EDE5DA"><td>Client</td><td>The web browser</td><td>The Metaverse Browser: “me”</td></tr>
+</table>
+</section>
+<section class="slide" id="idea" data-transition="fade" style="background:#120E1F;color:#F6F1EA;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#FF5FA8;letter-spacing:3px;text-transform:uppercase">The idea</p>
+<h2 style="font-size:96px;font-weight:700;line-height:1.1;width:1500px">Walk out of a Yale classroom and into a Cambridge kebab house.</h2>
+<p style="font-size:40px;color:#C9C0D6;line-height:1.4;width:1400px">Each world is its own live website, built by anyone, on any server. A door in one world points to another world’s address. Walking through it is clicking a link.</p>
+</section>
+<section class="slide" id="architecture" data-transition="fade" data-section="How it works: three ports and a four-part protocol" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">Architecture</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">Three live sites; the browser holds you</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:0;background:#120E1F;border-radius:24px;padding:40px;color:#F6F1EA">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<h3 style="font-size:40px;font-weight:700">Metaverse Browser · “me”</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;color:#FF5FA8">localhost:5175</p>
+</div>
+<p style="font-size:28px;color:#C9C0D6">Address bar, back and forward, bookmarks, your name and avatar</p>
+<div style="display:flex;gap:32px;padding:32px 0 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#2A2140;border:2px solid #4FC8F0;border-radius:16px;padding:32px">
+<h3 style="font-size:36px;font-weight:600">Yale SOM, Floor 2</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#4FC8F0">localhost:5173</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#2A2140;border:2px solid #4FC8F0;border-radius:16px;padding:32px">
+<h3 style="font-size:36px;font-weight:600">Darul Kebab</h3>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#4FC8F0">localhost:5174</p>
+</div>
+</div>
+</div>
+<p style="font-size:30px;color:#4A4458">The current world runs inside the browser in an iframe; the two talk by postMessage.</p>
+</section>
+<section class="slide" id="protocol" data-transition="fade" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">Protocol v0.1</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">Four messages make a world linkable</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600;color:#C2246F">1 · manifest</p>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">Each world serves a small JSON file: its name, spawn points and portals.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600;color:#C2246F">2 · enter</p>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">Browser → world: here is who I am and which spawn point to use.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600;color:#C2246F">3 · navigate</p>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">World → browser: I walked into a portal to this address.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600;color:#C2246F">4 · presence</p>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">World → browser: where I am now, such as “near the counter”.</p>
+</div>
+</div>
+</section>
+<section class="slide" id="manifest" data-transition="fade" style="background:#120E1F;color:#F6F1EA;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#FF5FA8;letter-spacing:3px;text-transform:uppercase">The manifest</p>
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">A world describes itself</h2>
+<p style="font-size:32px;color:#C9C0D6;line-height:1.4">Served at a well-known path, like robots.txt. A 3D browser reads it, and so can an AI agent.</p>
+</div>
+<div style="background:#1E1830;border:2px solid #3A2F55;border-radius:20px;padding:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#E8E1F2;white-space:normal">
+<span style="color:#9A8FB0">// /.well-known/metaverse.json</span><br>{<br>&#160;&#160;"name": "Darul Kebab",<br>&#160;&#160;"protocol": "mvw/0.1",<br>&#160;&#160;"spawns": { "front_door": "…" },<br>&#160;&#160;"portals": [{<br>&#160;&#160;&#160;&#160;"id": "to_yale", "label": "Yale SOM",<br>&#160;&#160;&#160;&#160;"href": "http://localhost:5173",<br>&#160;&#160;&#160;&#160;"spawn": "courtyard"<br>&#160;&#160;}]<br>}</p>
+</div>
+</section>
+<section class="slide" id="trip" data-transition="fade" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">One trip</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">From Evans Hall to dinner in five steps</h2>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px">
+<h3 style="font-size:64px;font-weight:700;color:#C2246F">1</h3>
+<p style="font-size:28px;color:#4A4458;line-height:1.35">You walk into the glowing door in the Yale courtyard.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px">
+<h3 style="font-size:64px;font-weight:700;color:#C2246F">2</h3>
+<p style="font-size:28px;color:#4A4458;line-height:1.35">Yale sends navigate to the browser.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px">
+<h3 style="font-size:64px;font-weight:700;color:#C2246F">3</h3>
+<p style="font-size:28px;color:#4A4458;line-height:1.35">The browser fades out, logs history, loads :5174.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px">
+<h3 style="font-size:64px;font-weight:700;color:#C2246F">4</h3>
+<p style="font-size:28px;color:#4A4458;line-height:1.35">It sends enter with your name and front_door.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px">
+<h3 style="font-size:64px;font-weight:700;color:#C2246F">5</h3>
+<p style="font-size:28px;color:#4A4458;line-height:1.35">You appear at the door. The owner says hello.</p>
+</div>
+</div>
+<p style="font-size:30px;color:#4A4458">Press Back and you are in the courtyard again.</p>
+</section>
+<section class="slide" id="makeworld" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">The standard, for builders</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">Six steps put any world on the Metaverse Web</h2></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px">
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><h3 style="font-size:34px;font-weight:700"><span style="color:#C2246F">1</span> Build it</h3><p style="font-size:27px;color:#4A4458;line-height:1.35">Any 3D website, any engine: three.js, Babylon, Unity WebGL.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><h3 style="font-size:34px;font-weight:700"><span style="color:#C2246F">2</span> Spawn points</h3><p style="font-size:27px;color:#4A4458;line-height:1.35">Read <span style="color:#C2246F">?spawn=</span> on load. Always have a <span style="color:#C2246F">default</span>.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><h3 style="font-size:34px;font-weight:700"><span style="color:#C2246F">3</span> Add mvw.js</h3><p style="font-size:27px;color:#4A4458;line-height:1.35">One small file: says ready, reports where you are, hands portal trips to the browser.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><h3 style="font-size:34px;font-weight:700"><span style="color:#C2246F">4</span> Manifest</h3><p style="font-size:27px;color:#4A4458;line-height:1.35">Serve .well-known/metaverse.json: name, description, spawns, portals.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><h3 style="font-size:34px;font-weight:700"><span style="color:#C2246F">5</span> Host it</h3><p style="font-size:27px;color:#4A4458;line-height:1.35">Anywhere static: GitHub Pages, Netlify, your own server.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><h3 style="font-size:34px;font-weight:700"><span style="color:#C2246F">6</span> Link both ways</h3><p style="font-size:27px;color:#4A4458;line-height:1.35">Portal to a friend’s address and spawn; they add one back.</p></div>
+</div>
+<p style="font-size:28px;color:#4A4458">The full spec is PROTOCOL.md; world_starter/ is a template that already does all six.</p>
+</section>
+<section class="slide" id="linksom" style="background:#120E1F;color:#F6F1EA;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:28px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#FF5FA8;letter-spacing:3px;text-transform:uppercase">Linking to Yale SOM</p>
+<h2 style="font-size:68px;font-weight:700;line-height:1.1">Your world, then one portal to mine</h2>
+<p style="font-size:32px;color:#C9C0D6;line-height:1.4">Put a portal in your world whose address is Yale SOM and whose spawn is one of its arrival points. List it in your manifest too.</p>
+<p style="font-size:32px;color:#C9C0D6;line-height:1.4">Then send me <span style="color:#FF5FA8">your address and a spawn id</span>. I add a portal back, and the two worlds are joined.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px">
+<div style="background:#1E1830;border:2px solid #3A2F55;border-radius:20px;padding:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.5;color:#E8E1F2"><span style="color:#9A8FB0">// your manifest’s portals</span><br>{<br>&#160;&#160;"id": "to_yale",<br>&#160;&#160;"label": "Yale SOM",<br>&#160;&#160;"href": "https://zlisto.github.io/<br>&#160;&#160;&#160;&#160;yale_som_virtual/",<br>&#160;&#160;"spawn": "default"<br>}</p>
+</div>
+<div style="background:#1E1830;border:2px solid #3A2F55;border-radius:20px;padding:36px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:22px;line-height:1.5;color:#E8E1F2"><span style="color:#9A8FB0">// in your three.js world</span><br>&lt;Portal x={0} z={-4}<br>&#160;&#160;href="https://zlisto.github.io/yale_som_virtual/"<br>&#160;&#160;spawn="default" back="lobby"<br>&#160;&#160;label="Yale SOM" /&gt;</p>
+</div>
+</div>
+</section>
+<section class="slide" id="priorart" data-transition="fade" data-section="What is new, and what we build first" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">Honest history</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">Others tried a 3D web; none became the web</h2>
+</div>
+<table style="font-size:32px;color:#120E1F">
+<tr><th style="width:16%">Year</th><th style="width:30%">Effort</th><th style="width:54%">What it did</th></tr>
+<tr><td>1994</td><td>VRML, then X3D</td><td>An HTML for 3D, with links between worlds</td></tr>
+<tr style="background:#EDE5DA"><td>2014</td><td>JanusVR</td><td>Web rooms joined by walk-through portals</td></tr>
+<tr><td>2018</td><td>Mozilla Hubs</td><td>Shared 3D rooms in the browser</td></tr>
+<tr style="background:#EDE5DA"><td>2022</td><td>Metaverse Standards Forum</td><td>Industry group on interoperability</td></tr>
+</table>
+<p style="font-size:30px;color:#4A4458">The idea is old. What changed in 2026 is who walks the web.</p>
+</section>
+<section class="slide" id="agents" data-transition="fade" style="background:#FF5FA8;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;letter-spacing:3px;text-transform:uppercase">What is new</p>
+<h2 style="font-size:104px;font-weight:700;line-height:1.05;width:1550px">A web built for people and AI agents to walk together.</h2>
+<p style="font-size:40px;line-height:1.4;width:1400px">Every world explains itself in plain JSON, so an agent can enter, look around, talk to the owner and follow a portal, just as you do.</p>
+</section>
+<section class="slide" id="search" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">Finding worlds</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">A search engine reads manifests, not pages</h2></div>
+<div style="display:flex;gap:16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:600;color:#C2246F">1</p><h3 style="font-size:38px;font-weight:700">Crawl</h3><p style="font-size:26px;color:#4A4458;line-height:1.35">Start from a few known worlds. Read each manifest; follow every portal href.</p></div>
+<p style="font-size:48px;color:#C2246F;align-self:center">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:600;color:#C2246F">2</p><h3 style="font-size:38px;font-weight:700">Index</h3><p style="font-size:26px;color:#4A4458;line-height:1.35">Store each world’s name, description, spawn points and portal labels.</p></div>
+<p style="font-size:48px;color:#C2246F;align-self:center">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:600;color:#C2246F">3</p><h3 style="font-size:38px;font-weight:700">Rank</h3><p style="font-size:26px;color:#4A4458;line-height:1.35">Worlds that more portals point to rank higher, like PageRank.</p></div>
+<p style="font-size:48px;color:#C2246F;align-self:center">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:32px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;font-weight:600;color:#C2246F">4</p><h3 style="font-size:38px;font-weight:700">Answer</h3><p style="font-size:26px;color:#4A4458;line-height:1.35">Results open a world at the right spawn point, not just its front door.</p></div>
+</div>
+<p style="font-size:30px;color:#4A4458">Search “biryani” → <span style="font-family:'JetBrains Mono', 'Courier New', monospace;color:#C2246F">darul_kebab/?spawn=front_door</span></p>
+</section>
+<section class="slide" id="search2" style="background:#120E1F;color:#F6F1EA;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px;justify-content:center">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#FF5FA8;letter-spacing:3px;text-transform:uppercase">Why search is easier here</p>
+<h2 style="font-size:84px;font-weight:700;line-height:1.08;width:1550px">Every world already describes itself in plain JSON.</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;width:1600px">
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="font-size:36px;color:#FF5FA8">No scraping</h3><p style="font-size:28px;color:#C9C0D6;line-height:1.4">Google had to guess what a page was about. A manifest just says so.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="font-size:36px;color:#FF5FA8">Deep links built in</h3><p style="font-size:28px;color:#C9C0D6;line-height:1.4">Spawn descriptions let results drop you at the buffet or the library.</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><h3 style="font-size:36px;color:#FF5FA8">Agents can use it</h3><p style="font-size:28px;color:#C9C0D6;line-height:1.4">An AI asks the index, picks a world, and walks in through the browser.</p></div>
+</div>
+</section>
+<section class="slide" id="roadmap" data-transition="fade" style="background:#F6F1EA;color:#120E1F;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#C2246F;letter-spacing:3px;text-transform:uppercase">Roadmap</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1">Build two worlds, then write the standard</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<h3 style="font-size:36px;font-weight:700"><span style="color:#C2246F">1</span> Darul Kebab</h3>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">The restaurant, its tables and the owner, on port 5174.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<h3 style="font-size:36px;font-weight:700"><span style="color:#C2246F">2</span> Metaverse Browser</h3>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">Address bar, identity, history and the world frame, on 5175.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<h3 style="font-size:36px;font-weight:700"><span style="color:#C2246F">3</span> Portals both ways</h3>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">Manifests and messages in Yale and Darul Kebab.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#FFFCF7;border:2px solid #E2D8CA;border-radius:20px;padding:40px">
+<h3 style="font-size:36px;font-weight:700"><span style="color:#C2246F">4</span> PROTOCOL.md</h3>
+<p style="font-size:30px;color:#4A4458;line-height:1.35">The written spec, so anyone can build a world.</p>
+</div>
+</div>
+</section>
+<section class="slide" id="close" data-transition="fade" style="background:radial-gradient(circle at 20% 80%, #3A1747 0%, #120E1F 60%);color:#F6F1EA;font-family:'Space Grotesk', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#FF5FA8;letter-spacing:3px;text-transform:uppercase">First stop</p>
+<h1 style="font-size:130px;font-weight:700;line-height:1.0;letter-spacing:-3px">Darul Kebab, reopened.</h1>
+<p style="font-size:40px;color:#C9C0D6;width:1300px;line-height:1.4">The first world we build: one dining room in Cambridge, eight tables, and the owner holding a plate of biryani.</p>
+</section>
+</div>
+<div id="ui"><button id="prev" aria-label="Previous slide">←</button><span id="count"></span><button id="next" aria-label="Next slide">→</button><button id="fs" aria-label="Full screen">⛶</button></div>
+<script>
+  // ← → / space / PageUp-Down to move, F for full screen, Home/End to jump. The slide number is kept in the URL hash.
+  const slides = [...document.querySelectorAll('.slide')]
+  const stage = document.getElementById('stage')
+  let start = 1
+  try {
+    start = parseInt(location.hash.slice(1)) || 1
+  } catch {
+    // no readable URL in this viewer; start at the first slide
+  }
+  let i = Math.min(slides.length - 1, Math.max(0, start - 1))
+  function show(n) {
+    i = Math.min(slides.length - 1, Math.max(0, n))
+    slides.forEach((s, k) => s.classList.toggle('on', k === i))
+    document.getElementById('count').textContent = (i + 1) + ' / ' + slides.length
+    try {
+      history.replaceState(null, '', '#' + (i + 1))
+    } catch {
+      // some viewers (sandboxed previews, about:srcdoc) don't allow changing the URL; the deck works without it
+    }
+  }
+  function toggleFs() {
+    try {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen()?.catch(() => {})
+    } catch {
+      // full screen isn't allowed in this viewer
+    }
+  }
+  function fit() { stage.style.transform = 'translate(-50%, -50%) scale(' + Math.min(innerWidth / 1920, innerHeight / 1080) + ')' }
+  addEventListener('resize', fit)
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1) }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1) }
+    else if (e.key === 'Home') show(0)
+    else if (e.key === 'End') show(slides.length - 1)
+    else if (e.key === 'f' || e.key === 'F') toggleFs()
+  })
+  document.getElementById('prev').onclick = () => show(i - 1)
+  document.getElementById('next').onclick = () => show(i + 1)
+  document.getElementById('fs').onclick = () => toggleFs()
+  stage.addEventListener('click', (e) => { if (!e.target.closest('a')) show(i + (e.clientX > innerWidth / 2 ? 1 : -1)) })
+  fit(); show(i)
+</script>
+</body>
+</html>
