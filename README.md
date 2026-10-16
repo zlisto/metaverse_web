@@ -14,7 +14,16 @@ The World Wide Web, with 3D worlds in place of pages. Every world is its own web
 | Yale SOM, Evans Hall | [walk](https://zlisto.github.io/evans-hall-3d/) | [zlisto/evans-hall-3d](https://github.com/zlisto/evans-hall-3d) |
 | Darul Kebab | [walk](https://zlisto.github.io/darul_kebab/) | [zlisto/darul_kebab](https://github.com/zlisto/darul_kebab) |
 | World Starter | [walk](https://zlisto.github.io/world_starter/) | [zlisto/world_starter](https://github.com/zlisto/world_starter) (a template) |
+| Great Pyramid of Giza | [walk](https://zlisto.github.io/great-pyramid-of-giza/) | [zlisto/great-pyramid-of-giza](https://github.com/zlisto/great-pyramid-of-giza) |
+| Hanging Gardens of Babylon | [walk](https://zlisto.github.io/hanging-gardens-of-babylon/) | [zlisto/hanging-gardens-of-babylon](https://github.com/zlisto/hanging-gardens-of-babylon) |
+| Statue of Zeus at Olympia | [walk](https://zlisto.github.io/statue-of-zeus-at-olympia/) | [zlisto/statue-of-zeus-at-olympia](https://github.com/zlisto/statue-of-zeus-at-olympia) |
+| Temple of Artemis at Ephesus | [walk](https://zlisto.github.io/temple-of-artemis-at-ephesus/) | [zlisto/temple-of-artemis-at-ephesus](https://github.com/zlisto/temple-of-artemis-at-ephesus) |
+| Mausoleum at Halicarnassus | [walk](https://zlisto.github.io/mausoleum-at-halicarnassus/) | [zlisto/mausoleum-at-halicarnassus](https://github.com/zlisto/mausoleum-at-halicarnassus) |
+| Colossus of Rhodes | [walk](https://zlisto.github.io/colossus-of-rhodes/) | [zlisto/colossus-of-rhodes](https://github.com/zlisto/colossus-of-rhodes) |
+| Lighthouse of Alexandria | [walk](https://zlisto.github.io/lighthouse-of-alexandria/) | [zlisto/lighthouse-of-alexandria](https://github.com/zlisto/lighthouse-of-alexandria) |
 | Registry | | [zlisto/metaverse_registry](https://github.com/zlisto/metaverse_registry) |
+
+The Seven Wonders of the Ancient World each have their own world, with a Labubu guide dressed for the period who answers questions about the wonder.
 
 ## Make a world and join
 
